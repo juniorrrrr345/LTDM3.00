@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // Configuration Cloudflare D1 hardcodée
 const CLOUDFLARE_CONFIG = {
   accountId: '7979421604bd07b3bd34d3ed96222512',
-  databaseId: '19ee81cc-91c0-4cfc-8cbe-dc67d8675e37',
+  databaseId: 'f65b4d99-d786-49a6-ac1a-8f58da52624c',
   apiToken: 'ijkVhaXCw6LSddIMIMxwPL5CDAWznxip5x9I1bNW'
 };
 
@@ -45,16 +45,16 @@ export async function GET(
       
       switch (params.slug) {
         case 'info':
-          defaultTitle = 'À propos d\'CALIWHITE';
-          defaultContent = 'Bienvenue chez CALIWHITE - Votre boutique premium de produits d\'exception.';
+          defaultTitle = 'À propos d\'LTDM.3.0';
+          defaultContent = 'Bienvenue chez LTDM.3.0 - Votre boutique premium de produits d\'exception.';
           break;
         case 'contact':
-          defaultTitle = 'Contact CALIWHITE';
-          defaultContent = 'Contactez-nous pour toute question concernant nos produits CALIWHITE.';
+          defaultTitle = 'Contact LTDM.3.0';
+          defaultContent = 'Contactez-nous pour toute question concernant nos produits LTDM.3.0.';
           break;
         default:
-          defaultTitle = 'Page CALIWHITE';
-          defaultContent = 'Contenu de la page CALIWHITE.';
+          defaultTitle = 'Page LTDM.3.0';
+          defaultContent = 'Contenu de la page LTDM.3.0.';
       }
       
       const defaultPage = {

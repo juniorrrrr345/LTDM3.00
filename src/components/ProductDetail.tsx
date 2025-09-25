@@ -4,7 +4,7 @@ import { Product } from './ProductCard';
 import { useCartStore } from '@/lib/cartStore';
 import { ShoppingCart } from 'lucide-react';
 import toast from 'react-hot-toast';
-import MediaDisplay from './MediaDisplay';
+// MediaDisplay supprimé - utilisation directe img/video
 
 interface ProductDetailProps {
   product: Product | null;

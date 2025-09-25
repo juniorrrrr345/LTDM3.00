@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // Configuration Cloudflare D1 hardcodée
 const CLOUDFLARE_CONFIG = {
   accountId: '7979421604bd07b3bd34d3ed96222512',
-  databaseId: '19ee81cc-91c0-4cfc-8cbe-dc67d8675e37',
+  databaseId: 'f65b4d99-d786-49a6-ac1a-8f58da52624c',
   apiToken: 'ijkVhaXCw6LSddIMIMxwPL5CDAWznxip5x9I1bNW'
 };
 
@@ -29,13 +29,13 @@ async function executeSqlOnD1(sql: string, params: any[] = []) {
 // GET - Récupérer les paramètres
 export async function GET() {
   try {
-    console.log('🔍 GET settings CALIWHITE...');
+    console.log('🔍 GET settings LTDM.3.0...');
     
     const result = await executeSqlOnD1('SELECT * FROM settings WHERE id = 1');
     
     if (result.result?.[0]?.results?.length) {
       const settings = result.result[0].results[0];
-      console.log('✅ Settings CALIWHITE récupérés:', settings);
+      console.log('✅ Settings LTDM.3.0 récupérés:', settings);
       
       // Mapper les champs D1 vers le format attendu par le frontend
       const mappedSettings = {
@@ -43,8 +43,8 @@ export async function GET() {
         backgroundImage: settings.background_image,
         backgroundOpacity: settings.background_opacity || 20,
         backgroundBlur: settings.background_blur || 5,
-        shopTitle: settings.shop_title || 'CALIWHITE',
-        shopName: settings.shop_title || 'CALIWHITE',
+        shopTitle: settings.shop_title || 'LTDM.3.0',
+        shopName: settings.shop_title || 'LTDM.3.0',
         infoContent: settings.info_content,
         contactContent: settings.contact_content,
         whatsappLink: settings.whatsapp_link || '',
@@ -55,26 +55,26 @@ export async function GET() {
       
       return NextResponse.json(mappedSettings);
     } else {
-      // Retourner des paramètres par défaut CALIWHITE
+      // Retourner des paramètres par défaut LTDM.3.0
       const defaultSettings = {
         id: 1,
-        shop_name: 'CALIWHITE',
+        shop_name: 'LTDM.3.0',
         background_image: 'https://pub-b38679a01a274648827751df94818418.r2.dev/images/background-oglegacy.jpeg',
         background_opacity: 20,
         background_blur: 5,
-        info_content: 'Bienvenue chez CALIWHITE - Votre boutique premium',
-        contact_content: 'Contactez CALIWHITE pour toute question',
+        info_content: 'Bienvenue chez LTDM.3.0 - Votre boutique premium',
+        contact_content: 'Contactez LTDM.3.0 pour toute question',
         backgroundImage: 'https://pub-b38679a01a274648827751df94818418.r2.dev/images/background-oglegacy.jpeg',
         backgroundOpacity: 20,
         backgroundBlur: 5,
-        shopTitle: 'CALIWHITE',
-        shopName: 'CALIWHITE'
+        shopTitle: 'LTDM.3.0',
+        shopName: 'LTDM.3.0'
       };
       
       return NextResponse.json(defaultSettings);
     }
   } catch (error) {
-    console.error('❌ Erreur GET settings CALIWHITE:', error);
+    console.error('❌ Erreur GET settings LTDM.3.0:', error);
     return NextResponse.json(
       { error: 'Erreur serveur lors de la récupération des paramètres' },
       { status: 500 }
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
 // PUT - Mettre à jour les paramètres
 export async function PUT(request: NextRequest) {
   try {
-    console.log('🔧 PUT settings CALIWHITE...');
+    console.log('🔧 PUT settings LTDM.3.0...');
     const body = await request.json();
     
     const {
@@ -120,9 +120,9 @@ export async function PUT(request: NextRequest) {
     const finalBackgroundImage = background_image || backgroundImage;
     const finalBackgroundOpacity = background_opacity ?? backgroundOpacity ?? 20;
     const finalBackgroundBlur = background_blur ?? backgroundBlur ?? 5;
-    const finalInfoContent = info_content || infoContent || 'Bienvenue chez CALIWHITE';
-    const finalContactContent = contact_content || contactContent || 'Contactez CALIWHITE';
-    const finalShopTitle = shop_title || shopTitle || 'CALIWHITE';
+    const finalInfoContent = info_content || infoContent || 'Bienvenue chez LTDM.3.0';
+    const finalContactContent = contact_content || contactContent || 'Contactez LTDM.3.0';
+    const finalShopTitle = shop_title || shopTitle || 'LTDM.3.0';
     const finalWhatsappLink = whatsapp_link || whatsappLink || '';
     const finalWhatsappNumber = whatsapp_number || whatsappNumber || '';
     const finalScrollingText = scrolling_text || scrollingText || '';
@@ -185,20 +185,20 @@ export async function PUT(request: NextRequest) {
     const result = await executeSqlOnD1('SELECT * FROM settings WHERE id = 1');
     const settings = result.result[0].results[0];
     
-    console.log('✅ Settings CALIWHITE mis à jour:', settings);
+    console.log('✅ Settings LTDM.3.0 mis à jour:', settings);
 
     const mappedSettings = {
       ...settings,
       backgroundImage: settings.background_image,
       backgroundOpacity: settings.background_opacity,
       backgroundBlur: settings.background_blur,
-      shopTitle: 'CALIWHITE',
-      shopName: 'CALIWHITE'
+      shopTitle: 'LTDM.3.0',
+      shopName: 'LTDM.3.0'
     };
 
     return NextResponse.json(mappedSettings);
   } catch (error) {
-    console.error('❌ Erreur PUT settings CALIWHITE:', error);
+    console.error('❌ Erreur PUT settings LTDM.3.0:', error);
     return NextResponse.json(
       { error: 'Erreur serveur lors de la mise à jour des paramètres' },
       { status: 500 }
